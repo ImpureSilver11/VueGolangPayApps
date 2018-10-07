@@ -3,7 +3,7 @@ syntax = "proto3";
 package paymentservice;
 
 service PayManager {
-    rpc Change ()
+    rpc Change (PayRequest) returns (PayResponse) {}
 }
 
 message PayRequest {
@@ -12,10 +12,10 @@ message PayRequest {
     int64 amount = 3;
     string name = 4;
     string description = 5;
-
 }
 
 message PayResponse {
     bool paid = 1;
-
+    bool captured = 3;
+    int64 amount = 2;
 }
